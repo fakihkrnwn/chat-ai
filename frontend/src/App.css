@@ -1,0 +1,388 @@
+:root {
+  --primary: #0084ff;
+  --user-bg: #007bff;
+  --ai-bg: #2b2d31;
+  --bg-color: #1e1e1e;
+  --text-color: #e0e0e0;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--bg-color);
+}
+
+.chat-header {
+  background: var(--bg-color);
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status {
+  color: var(--primary);
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  background: rgba(0, 132, 255, 0.1);
+  border-radius: 12px;
+}
+
+
+.messages-container {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.message.user {
+  align-items: flex-end;
+}
+
+.message-bubble {
+  background: var(--ai-bg);
+  padding: 1rem;
+  border-radius: 12px;
+  max-width: 70%;
+  margin-bottom: 0.3rem;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-family: 'Inter', sans-serif;
+  line-height: 2;
+  letter-spacing: 0.2px;
+  padding: 1.2rem;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.ai .message-bubble {
+  animation: fadeInDown 1.0s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.message.user .message-bubble {
+  background: var(--user-bg);
+  color: white;
+}
+
+.message-time {
+  font-size: 0.7rem;
+  color: #888;
+  margin-right: auto;
+}
+
+.message.user .message-time {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.file-upload-button {
+  cursor: pointer;
+  margin-right: 10px;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.file-upload-button:hover {
+  color: #007bff;
+}
+
+.file-info {
+  margin-top: 8px;
+  padding: 6px;
+  background: #1e1e1e;
+  border-radius: 4px;
+  font-size: 0.9em;
+  display: flex;                             
+  align-items: center;
+  gap: 5px;
+}
+
+.file-info svg {
+  margin-right: 5px;
+}
+
+.image-preview {
+  max-width: 200px;
+  margin-top: 8px;
+  border-radius: 4px;
+  display: block;
+}
+
+.file-error-message {
+  color: #dc3545;
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+
+.file-upload-button-error {
+  color: #dc3545;
+}
+
+.pre-send-preview {
+  position: relative;
+  margin: 10px 0;
+  padding: 10px;
+  background: #1e1e1e;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pre-send-image {
+  max-width: 150px;
+  max-height: 100px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.file-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9em;
+}
+
+.remove-file-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ff4444;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-file-button:hover {
+  background: #cc0000;
+}
+
+.input-container {
+  display: flex;
+  border-top: 1px solid #333;
+  background: var(--bg-color);
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 1rem;
+  background: var(--ai-bg);
+  border: none;
+  border-radius: 25px;
+  color: var(--text-color);
+}
+
+.input-container button {
+  background: var(--primary);
+  border: none;
+  padding: 0 1.5rem;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+.yes-no-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.yes-button, .no-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.yes-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.no-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.yes-button:hover {
+  background-color: #45a049;
+}
+
+.no-button:hover {
+  background-color: #d32f2f;
+}
+
+.save-container {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  background: var(--bg-color);
+  border-top: 1px solid #333;
+}
+
+.format-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.format-selector button {
+  padding: 8px 16px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.format-selector button.active {
+  background: var(--primary);
+}
+
+.save-button {
+  background: #28a745;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.save-button:hover {
+  transform: scale(1.05);
+}
+
+.save-button:active {
+  transform: scale(0.95);
+}
+
+.save-button svg {
+  margin-right: 8px;
+}
+
+.pdf-content {
+  background-color: #1e1e1e;
+  color: white;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.pdf-message-bubble {
+  background: #2b2d31 !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  margin: 5px 0 !important;
+}
+
+.pdf-file-info {
+  color: #888 !important;
+  margin-top: 5px !important;
+}
+
+.pdf-message-time {
+  color: #666 !important;
+  font-size: 0.8em !important;
+  margin-top: 2px !important;
+}
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.image-modal img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+}
+
+.image-modal span {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chat-container {
+    padding: 0 1rem;
+  }
+  
+  .input-container input {
+    padding: 0.8rem;
+  }
+}

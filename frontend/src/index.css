@@ -1,0 +1,87 @@
+/* index.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #1e1e1e;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #1e1e1e;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .menu {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .menu li {
+    list-style: none;
+  }
+  
+  .menu li button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    transition: color 0.2s;
+  }
+  
+  .menu li button:hover {
+    color: #007bff;
+  }
+  
+  .menu li button.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+  }
+  
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  
+    .menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #1e1e1e;
+      flex-direction: column;
+      display: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      gap: 0;
+    }
+  
+    .menu.active {
+      display: flex;
+    }
+  
+    .menu li {
+      padding: 0.8rem 2rem;
+      border-bottom: 1px solid #1e1e1e;
+    }
+  
+    .menu li:last-child {
+      border-bottom: none;
+    }
+  }
